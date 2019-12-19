@@ -124,5 +124,11 @@ namespace EnglishChineseDictionary
                 catch { }
             }
         }
+
+        private void 从MySQL导入单词ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Form3().ShowDialog();
+            GetAllWord();
+        }
     }
 }

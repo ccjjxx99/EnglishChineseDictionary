@@ -41,6 +41,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.添加单词ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.从MySQL导入单词ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出程序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -150,6 +151,7 @@
             // 
             this.编辑ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.添加单词ToolStripMenuItem,
+            this.从MySQL导入单词ToolStripMenuItem,
             this.退出程序ToolStripMenuItem});
             this.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem";
             this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
@@ -158,14 +160,21 @@
             // 添加单词ToolStripMenuItem
             // 
             this.添加单词ToolStripMenuItem.Name = "添加单词ToolStripMenuItem";
-            this.添加单词ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.添加单词ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.添加单词ToolStripMenuItem.Text = "添加单词";
             this.添加单词ToolStripMenuItem.Click += new System.EventHandler(this.添加单词ToolStripMenuItem_Click);
+            // 
+            // 从MySQL导入单词ToolStripMenuItem
+            // 
+            this.从MySQL导入单词ToolStripMenuItem.Name = "从MySQL导入单词ToolStripMenuItem";
+            this.从MySQL导入单词ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.从MySQL导入单词ToolStripMenuItem.Text = "从MySQL导入单词";
+            this.从MySQL导入单词ToolStripMenuItem.Click += new System.EventHandler(this.从MySQL导入单词ToolStripMenuItem_Click);
             // 
             // 退出程序ToolStripMenuItem
             // 
             this.退出程序ToolStripMenuItem.Name = "退出程序ToolStripMenuItem";
-            this.退出程序ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.退出程序ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.退出程序ToolStripMenuItem.Text = "退出程序";
             this.退出程序ToolStripMenuItem.Click += new System.EventHandler(this.退出程序ToolStripMenuItem_Click);
             // 
@@ -210,6 +219,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 修改ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 从MySQL导入单词ToolStripMenuItem;
     }
 }
 

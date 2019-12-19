@@ -44,5 +44,11 @@ namespace EnglishChineseDictionary
         {
             return client.SearchKeys(word + "*");
         }
+        //添加多个单词
+        public void AddDic(Dictionary<string,string> dic)
+        {
+            foreach (KeyValuePair<string, string> pair in dic)
+                client.Add(pair.Key, pair.Value);
+        }
     }
 }
