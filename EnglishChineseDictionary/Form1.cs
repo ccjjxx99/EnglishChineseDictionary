@@ -13,7 +13,7 @@ namespace EnglishChineseDictionary
 {
     public partial class Form1 : Form
     {
-        RedisClient client;
+        RedisHelper helper;
 
         public Form1()
         {
@@ -22,7 +22,7 @@ namespace EnglishChineseDictionary
 
         private void GetAllWord()
         {
-            List<string> keylist = client.GetAllKeys();
+            List<string> keylist = helper.GetAllWord();
             listBox1.Items.Clear();
             if (keylist.Count == 0)
             {
@@ -38,7 +38,7 @@ namespace EnglishChineseDictionary
 
         private void GetWord(string word)
         {
-            List<string> keylist = client.SearchKeys(word + "*");
+            List<string> keylist = helper.SearchWord(word);
             listBox1.Items.Clear();
             if (keylist.Count == 0)
             {
@@ -57,7 +57,7 @@ namespace EnglishChineseDictionary
         {
             try
             {
-                client = RedisHelper.GetClient();
+                helper = new RedisHelper("127.0.0.1",6379);
             }
             catch
             {
@@ -78,7 +78,7 @@ namespace EnglishChineseDictionary
             {
                 string key = listBox1.SelectedItem.ToString();
                 label1.Text = key;
-                textBox2.Text = client.Get<string>(key);
+                textBox2.Text = helper.Get(key);
             }
             catch 
             {
@@ -115,7 +115,7 @@ namespace EnglishChineseDictionary
             DialogResult ret = MessageBox.Show("确定删除单词\"" + key + "\"吗？", "确定删除", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (ret == DialogResult.Yes)
             {
-                client.Remove(key);
+                helper.Remove(key);
                 listBox1.Items.RemoveAt(index);
                 try
                 {

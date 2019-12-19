@@ -9,10 +9,40 @@ namespace EnglishChineseDictionary
 {
     class RedisHelper
     {
-        static readonly RedisClient client = new RedisClient("127.0.0.1", 6379);
-        public static RedisClient GetClient()
+        RedisClient client;
+        public RedisHelper(string host, int port)
         {
-            return client;
+            client = new RedisClient(host, port);
+        }
+
+        //添加单词
+        public bool Add(string word, string mean)
+        {
+            return client.Add(word, mean);
+        }
+        //删除单词
+        public bool Remove(string word)
+        {
+            return client.Remove(word);
+        }
+        //修改单词
+        public bool Set(string word, string mean)
+        {
+            return client.Set(word, mean);
+        }
+        //查询一个单词
+        public string Get(string word)
+        {
+            return client.Get<string>(word);
+        }
+        //查询单词列表
+        public List<string> GetAllWord(){
+            return client.GetAllKeys();
+        }
+        //模糊查询一个单词
+        public List<string> SearchWord(string word)
+        {
+            return client.SearchKeys(word + "*");
         }
     }
 }

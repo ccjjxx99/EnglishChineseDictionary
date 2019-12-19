@@ -14,6 +14,7 @@ namespace EnglishChineseDictionary
     public partial class Form2 : Form
     {
         private bool isAdd = true;
+        RedisHelper helper;
         public Form2()
         {
             InitializeComponent();
@@ -26,18 +27,21 @@ namespace EnglishChineseDictionary
             textBox2.Text = value;
             isAdd = false;
             textBox1.ReadOnly = true;
-            RedisClient client = RedisHelper.GetClient();
-            textBox2.Text = client.Get<string>(word);
+            helper = new RedisHelper("127.0.0.1",6379);
+            textBox2.Text = helper.Get(word);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RedisClient client = RedisHelper.GetClient();
-            string key = textBox1.Text;
-            string value = textBox2.Text;
+            if (helper == null)
+            {
+                helper = new RedisHelper("127.0.0.1", 6379);
+            }
+            string word = textBox1.Text;
+            string mean = textBox2.Text;
             if (isAdd)
             {
-                if (client.Add(key, value))
+                if (helper.Add(word, mean))
                 {
                     Dispose();
                 }
@@ -48,7 +52,7 @@ namespace EnglishChineseDictionary
             }
             else
             {
-                if (client.Set(key, value))
+                if (helper.Set(word, mean))
                 {
                     Dispose();
                 }
