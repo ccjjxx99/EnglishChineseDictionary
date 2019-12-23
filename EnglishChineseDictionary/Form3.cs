@@ -23,13 +23,19 @@ namespace EnglishChineseDictionary
             Dictionary<string, string> dic = new Dictionary<string, string>();
             try
             {
-                string config = "Data Source=" + textBox1.Text + ";database=" + textBox5.Text + ";User Id=" + textBox3.Text + ";" +
-                    "Password=" + textBox4.Text + ";CharSet=utf8;port=" + textBox2.Text + ";";
+                //连接特定数据库
+                string config = "Data Source=" + textBox1.Text + 
+                    ";database=" + textBox5.Text + 
+                    ";User Id=" + textBox3.Text +
+                    ";Password=" + textBox4.Text + 
+                    ";CharSet=utf8;port=" + textBox2.Text + ";";
                 MySqlConnection conn = new MySqlConnection(config);
-                string sql = "select " + textBox7.Text + ", " + textBox8.Text +" from "+ textBox6.Text;
+                string sql = "select " + textBox7.Text + ", " + textBox8.Text
+                    +" from "+ textBox6.Text;
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
+                //遍历将所有数据添加到一个字典中
                 while (reader.Read())
                 {
                     dic.Add(reader[0].ToString(), reader[1].ToString());
@@ -37,18 +43,21 @@ namespace EnglishChineseDictionary
             }
             catch (Exception)
             {
-                MessageBox.Show("Mysql数据库连接错误", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Mysql数据库连接错误", "错误",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Dispose();
                 return;
             }
             try
             {
+                //将字典全部添加到redis中
                 RedisHelper helper = new RedisHelper("127.0.0.1", 6379);
                 helper.AddDic(dic);
             }
             catch (Exception)
             {
-                MessageBox.Show("向Redis数据库添加时发生错误", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("向Redis数据库添加时发生错误", "错误",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Dispose();
                 return;
             }

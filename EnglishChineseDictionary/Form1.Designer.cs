@@ -160,21 +160,21 @@
             // 添加单词ToolStripMenuItem
             // 
             this.添加单词ToolStripMenuItem.Name = "添加单词ToolStripMenuItem";
-            this.添加单词ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.添加单词ToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
             this.添加单词ToolStripMenuItem.Text = "添加单词";
             this.添加单词ToolStripMenuItem.Click += new System.EventHandler(this.添加单词ToolStripMenuItem_Click);
             // 
             // 从MySQL导入单词ToolStripMenuItem
             // 
             this.从MySQL导入单词ToolStripMenuItem.Name = "从MySQL导入单词ToolStripMenuItem";
-            this.从MySQL导入单词ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.从MySQL导入单词ToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
             this.从MySQL导入单词ToolStripMenuItem.Text = "从MySQL导入单词";
             this.从MySQL导入单词ToolStripMenuItem.Click += new System.EventHandler(this.从MySQL导入单词ToolStripMenuItem_Click);
             // 
             // 退出程序ToolStripMenuItem
             // 
             this.退出程序ToolStripMenuItem.Name = "退出程序ToolStripMenuItem";
-            this.退出程序ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.退出程序ToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
             this.退出程序ToolStripMenuItem.Text = "退出程序";
             this.退出程序ToolStripMenuItem.Click += new System.EventHandler(this.退出程序ToolStripMenuItem_Click);
             // 
